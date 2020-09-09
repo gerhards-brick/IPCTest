@@ -9,7 +9,8 @@ namespace IPCHost.NETFramework
     {
         static void Main(string[] args)
         {
-            
+            var program = new Program();
+            program.CreateHost();
         }
 
         public void CreateHost()
