@@ -46,8 +46,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WCF\ITestService.cs" />
-    <Compile Include="WCF\TestService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
