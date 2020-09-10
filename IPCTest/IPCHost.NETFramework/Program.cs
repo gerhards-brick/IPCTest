@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using Microsoft.Owin.Hosting;
@@ -34,9 +34,10 @@ namespace IPCHost.NETFramework
     [HubName("GhettoHub")]
     public class MyHub : Hub
     {
-        public void Send(string name, string message)
+        public void Send(string message)
         {
-            Clients.All.addMessage(name, message);
+            Clients.All.addMessage(message);
+            Console.WriteLine(message);
         }
     }
 }
