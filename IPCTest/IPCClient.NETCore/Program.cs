@@ -1,10 +1,28 @@
-﻿namespace IPCClient.NETCore
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.AspNet.SignalR.Client;
+
+namespace IPCClient.NETCore
 {
     class Program
     {
         static void Main(string[] args)
         {
+            var hubconnection = new HubConnection("http://localhost:8080/signalr", useDefaultUrl: false);
+            var hubProxy = hubconnection.CreateHubProxy("GhettoHub");
+            try
+            {
+                hubconnection.Start().Wait();
+                Console.WriteLine("Connection successful");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
 
+            var message = Console.ReadLine();
+            hubProxy.Invoke("Send", message);
+            Console.ReadLine();
         }
     }
 }
