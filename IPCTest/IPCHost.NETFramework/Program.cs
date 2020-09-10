@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Hubs;
 using Microsoft.Owin.Hosting;
 using Owin;
 using Microsoft.Owin.Cors;
@@ -30,6 +31,7 @@ namespace IPCHost.NETFramework
             app.MapSignalR();
         }
     }
+    [HubName("GhettoHub")]
     public class MyHub : Hub
     {
         public void Send(string name, string message)
