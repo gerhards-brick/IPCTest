@@ -25,10 +25,20 @@ namespace IPCClient.NETCore
 
             var message = Console.ReadLine();
             hubProxy.Invoke("Send", message);
-            Console.ReadLine();
+            Task.Run(KeepAlive).Wait();
+        }
+
         private static void ActOnReceivedMessage(string message)
         {
             Console.WriteLine(message);
+        }
+
+        private static void KeepAlive()
+        {
+            while (true)
+            {
+                
+            }
         }
         }
     }
