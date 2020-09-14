@@ -21,7 +21,15 @@ namespace IPCHost.NETFramework
             {
                 Console.WriteLine("Server running on {0}", url);
                 Console.ReadLine();
+                ChangeState();
+                Console.ReadLine();
             }
+        }
+
+        public static void ChangeState()
+        {
+            var clients = GlobalHost.ConnectionManager.GetHubContext<MyHub>().Clients;
+            clients.All.Changestate();
         }
     }
     class Startup
@@ -39,7 +47,6 @@ namespace IPCHost.NETFramework
         {
             Clients.All.Send("Message has been received");
             Console.WriteLine(message);
-            Clients.Caller.Changestate();
         }
 
         public void CurrentTime()
