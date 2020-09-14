@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR.Client;
 
@@ -13,6 +13,8 @@ namespace IPCClient.NETCore
             hubProxy
                 .On<string>("send", answer =>
                     Task.Run(() => ActOnReceivedMessage(answer)));
+            hubProxy
+                .On("changestate", WriteSomethingElse);
             try
             {
                 hubconnection.Start().Wait();
@@ -40,6 +42,10 @@ namespace IPCClient.NETCore
                 
             }
         }
+
+        private static void WriteSomethingElse()
+        {
+            Console.WriteLine("Changed State from Paused to Running");
         }
     }
 }

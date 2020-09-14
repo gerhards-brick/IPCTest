@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using Microsoft.Owin.Hosting;
@@ -38,6 +38,7 @@ namespace IPCHost.NETFramework
         {
             Clients.All.Send("Message has been received");
             Console.WriteLine(message);
+            Clients.Caller.Changestate();
         }
     }
 }
