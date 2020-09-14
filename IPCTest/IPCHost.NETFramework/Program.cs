@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using Microsoft.Owin.Hosting;
@@ -39,6 +40,21 @@ namespace IPCHost.NETFramework
             Clients.All.Send("Message has been received");
             Console.WriteLine(message);
             Clients.Caller.Changestate();
+        }
+
+        public void CurrentTime()
+        {
+            var library = new SomeMethodLibrary();
+            library.PrintOutTime();
+        }
+    }
+
+    public class SomeMethodLibrary
+    {
+        public void PrintOutTime()
+        {
+            var time = DateTime.Now.ToString(CultureInfo.InvariantCulture);
+            Console.WriteLine(time);
         }
     }
 }

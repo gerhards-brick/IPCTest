@@ -27,6 +27,8 @@ namespace IPCClient.NETCore
 
             var message = Console.ReadLine();
             hubProxy.Invoke("Send", message);
+            Console.ReadLine();
+            hubProxy.Invoke("CurrentTime");
             Task.Run(KeepAlive).Wait();
         }
 
